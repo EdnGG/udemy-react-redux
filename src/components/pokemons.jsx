@@ -24,15 +24,27 @@ const Pokemons = () => {
   }, [dispatch])
 
   return (
-    <div className="row">
+    <div className="row mt-5">
       <div className="col-md-6">
 
 
       
       <h3>Pokemon list</h3>
-        <br />
+        <ul className="list-group mt-4">
+            {
+              pokemones.map(pokemon => (
+                <li className="list-group-item text-uppercase" key={pokemon.name}>
+                  {pokemon.name}
+                  <button
+                    className="btn btn-dark btn-sm float-right"
+                    onClick={ ()=> dispatch(actionPokeDetails(pokemon.url))}
+                  > Details </button>
+                </li>
+              ))
+            }
+          </ul>
         
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between mt-4">
           {
             pokemones.length === 0 &&
             <button className="btn btn-dark" onClick={() => dispatch(getPokemonsAction())}>Get Pockemons</button>
@@ -46,19 +58,7 @@ const Pokemons = () => {
             <button className="btn btn-dark" onClick={() => dispatch(prevPokemonAction())}>Prev Pockemons</button>
           }
         </div>
-          <ul className="list-group">
-            {
-              pokemones.map(pokemon => (
-                <li className="list-group-item text-uppercase" key={pokemon.name}>
-                  {pokemon.name}
-                  <button
-                    className="btn btn-dark btn-sm float-right"
-                    onClick={ ()=> dispatch(actionPokeDetails(pokemon.url))}
-                  > Details </button>
-                </li>
-              ))
-            }
-          </ul>
+          
       </div>
       <div className="col-md-6">
         <h3>Pockemon details</h3>

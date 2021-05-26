@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import {actionPokeDetails, getPokemonsAction} from '../Redux/pockemonDucks'
+import {actionPokeDetails} from '../Redux/pockemonDucks'
 
 const Details = () => {
 
@@ -22,7 +22,7 @@ const Details = () => {
       <div className="card-body">
         <img src={pokemon.picture} className="img-fluid" alt="" />
         <div className="card-title text-uppercase">{pokemon.name}</div>
-        <p className="card-text">{pokemon.weigth}  |  {pokemon.height}</p>
+        <p className="card-text">Weigth: {pokemon.weigth}  |  Height: {pokemon.height}</p>
       </div>
       
     </div>

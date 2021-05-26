@@ -5,10 +5,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 import pokeReducer from "./pockemonDucks";
+import userReducer, {readActiveUserAction} from "./userDucks"
 
 // El nombre de la key del objeto es importante porque es como vamos a poder pintar la info en nuestros componentes
 const rootReducer = combineReducers({
   pokemones: pokeReducer,
+  user: userReducer
 });
 
 // Utilizando la extenxion de google chrome instalada en el navegador
@@ -24,7 +26,7 @@ export default function generateStore() {
     composeWithDevTools(applyMiddleware(thunk))
     // composeEnhancers(composeWithDevTools(applyMiddleware(thunk)))
   );
-
+  readActiveUserAction()(store.dispatch)
   return store;
 }
 
